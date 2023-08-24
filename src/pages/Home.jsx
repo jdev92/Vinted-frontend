@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/logoVinted.png';
+import homePicture from "../assets/banner-img.jpg";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -23,7 +24,7 @@ const Home = ({ data, setData }) => {
         };
 
         fetchData();
-    }, []);
+    }, [setData]);
 
     return isLoading ? (
         <span>Loading...</span>
@@ -43,13 +44,16 @@ const Home = ({ data, setData }) => {
                 <button>Vends tes articles</button>
             </div>
             <div className="home-hero">
-                {/* <img src="" alt="" /> */}
+                <img src={homePicture} alt="" />
             </div>
             <main>
                 <div className="home-card">
                     {data.offers.map((offer) => (
                         <Link to={`/offers/${offer._id}`} key={offer._id} className="card">
                             <div className="avatar">
+                                {offer.owner.account.avatar && (
+                                    <img src={offer.owner.account.avatar.secure_url} alt="{offer.product_name}" />
+                                )}
                                 <p>{offer.owner.account.username}</p>
                             </div>
                             <div className="card-img">
@@ -61,7 +65,7 @@ const Home = ({ data, setData }) => {
                         </Link>
                     ))}
                 </div>
-            // </main>
+            </main>
         </div>)
 
 };
