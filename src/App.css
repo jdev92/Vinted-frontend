@@ -1,5 +1,5 @@
 .container {
-    max-width: 1290px;
+    max-width: 1300px;
     margin: auto;
 }
 
@@ -19,7 +19,28 @@
     height: 37px;
     outline: none;
     padding-left: 40px;
-    width: 590px;
+    width: 450px;
+}
+
+button {
+    background-color: #f5f6f7;
+    color: rgb(75, 178, 187);
+    border: 1px solid rgb(75, 178, 187);
+    border-radius: 5px;
+    font-size: 12px;
+    height: 30px;
+    outline: none;
+    width: 115px;
+}
+
+.button-sold {
+    color: #f5f6f7;
+    background-color: rgb(75, 178, 187);
+    border-radius: 5px;
+    font-size: 12px;
+    height: 30px;
+    outline: none;
+    width: 115px;
 }
 
 .home-hero img {
@@ -29,19 +50,7 @@
     object-fit: cover;
 }
 
-
-.card-img img {
-    width: 235px;
-    height: 398px;
-    object-fit: cover;
-}
-
-.card-img:last-child {
-    margin-bottom: 30px;
-}
-
 .home-card {
-    /* background-color: red; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -49,8 +58,11 @@
     cursor: pointer;
 }
 
-/* ------MAIN------ */
+/* ------OFFER------ */
 .offer {
+    background-color: rgb(235, 237, 238);
+    padding-top: 35px;
+    height: calc(100vh - 10px);
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
@@ -65,17 +77,46 @@
 .offer-price {
     width: 320px;
     height: 520px;
-    background-color: red;
+    background-color: #f5f6f7;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 40px;
 }
 
-.offer-list {
-    display: flex;
-    flex-direction: column;
+.offer-price button {
+    color: #fff;
+    background-color: rgb(75, 178, 187);
+    border-radius: 5px;
+    font-size: 16px;
+    height: 36px;
+    outline: none;
+    width: 320px;
+    height: 35px;
+}
 
+.price {
+    color: #111;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+
+.offer-list li {
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.offer-list span:nth-child(odd) {
+    color: #999;
+}
+
+
+.offer-list span:nth-child(2n) {
+    color: #666;
+    font-weight: 700;
 }
 
 .offer-content p {
@@ -85,6 +126,25 @@
 .offer-content img {
     width: 50px;
     height: 50px;
+}
+
+.card {
+    text-decoration: none;
+
+}
+
+.card-img img {
+    width: 235px;
+    height: 398px;
+    object-fit: cover;
+}
+
+.card-img:last-child {
+    margin-bottom: 30px;
+}
+
+.card-img:first-child p {
+    padding: 2px;
 }
 
 .avatar {
