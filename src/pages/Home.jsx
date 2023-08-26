@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from '../assets/logoVinted.png';
 import homePicture from "../assets/banner-img.jpg";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -30,23 +29,6 @@ const Home = ({ data, setData }) => {
         <span>Loading...</span>
     ) : (
         <div className="container">
-            <div className="header">
-                <div className="header-logo">
-                    <img src={logo} alt="Logo Vinted" />
-                </div>
-                <div className="shearch">
-                    <input type="text" placeholder="Rechercher des articles" />
-                </div>
-                <div className="login">
-                    <Link to="/signup">
-                        <button>S'inscrire</button>
-                    </Link>
-                    <Link to="/login">
-                        <button>Se connecter</button>
-                    </Link>
-                </div>
-                <button>Vends tes articles</button>
-            </div>
             <div className="home-hero">
                 <img src={homePicture} alt="" />
             </div>
