@@ -3,7 +3,8 @@ import { useState } from "react";
 import Home from './pages/Home';
 import Offer from './pages/Offer';
 import Signup from "./pages/Signup";
-import Login from './pages/Login'
+import Login from './pages/Login';
+import Header from "./components/Header";
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home data={data} setData={setData} />} />
           <Route path="/offers/:id" element={<Offer data={data} setData={setData} />} />
