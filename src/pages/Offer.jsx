@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import logo from '../assets/logoVinted.png';
 
 const Offer = ({ data, setData }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -24,62 +22,55 @@ const Offer = ({ data, setData }) => {
                 console.log(error.message);
             }
         };
-
         // Appel de la fonction fetchData lorsque l'ID change ou les données sont mises à jour
         fetchData();
     }, [id, setData]); // Utilisation de l'ID et de setData comme dépendances de useEffect
 
     return (
         <>
-            <header>
-                <div className="header">
-                    <div className="header-logo">
-                        <Link to={"/"}>
-                            <img src={logo} alt="Logo Vinted" />
-                        </Link>
-                    </div>
-                    <div className="shearch">
-                        <input type="text" placeholder="Rechercher des articles" />
-                    </div>
-                    <div className="login">
-                        <button>S'inscrire</button>
-                        <button>Se connecter</button>
-                    </div>
-                    <button>Vends tes articles</button>
-                </div>
-            </header>
             <main>
                 {isLoading ? (
                     <span>Loading...</span>
                 ) : (
-                    <div className="container">
-                        <div className="offer">
-                            {/* Affichage de l'image de l'offre à partir des données */}
-                            <img src={data.product_image.url} alt="" />
-                            <div className="offer-price">
-                                <ul className="offer-list">
-                                    <span>{data.product_price} €</span>
-                                    <li>MARQUE {data.product_details[0]?.MARQUE} </li>
-                                    <li>TAILLE {data.product_details[1]?.TAILLE} </li>
-                                    <li>ETAT {data.product_details[2]?.ETAT} </li>
-                                    <li>COULEUR {data.product_details[3]?.COULEUR}</li>
-                                    <li>EMPLACEMENT {data.product_details[4]?.EMPLACEMENT}</li>
-                                </ul>
-                                <div className="offer-content">
-                                    <p>{data.product_name}</p>
-                                    <p>{data.product_description}</p>
-                                    <div className="avatar">
-                                        <img src={data.owner.account.avatar.url} alt="" />
-                                        <span>{data.owner.account.username}</span>
-                                    </div>
-                                </div>
 
-                                <button>Acheter</button>
+                    <div className="offer">
+                        {/* Affichage de l'image de l'offre à partir des données */}
+                        <img src={data.product_image.url} alt="" />
+                        <div className="offer-price">
+                            <span className="price">{data.product_price} €</span>
+                            <ul className="offer-list">
+                                <li>
+                                    <span>MARQUE</span>
+                                    <span> {data.product_details[0]?.MARQUE}</span>
+                                </li>
+                                <li><span>TAILLE</span>
+                                    <span> {data.product_details[1]?.TAILLE}</span>
+                                </li>
+                                <li>
+                                    <span>ETAT</span>
+                                    <span> {data.product_details[2]?.ETAT}</span>
+                                </li>
+                                <li>
+                                    <span>COULEUR</span>
+                                    <span>{data.product_details[3]?.COULEUR} </span>
+                                </li>
+                                <li>
+                                    <span>EMPLACEMENT</span>
+                                    <span>{data.product_details[4]?.EMPLACEMENT} </span>
+                                </li>
+                            </ul>
+                            <div className="offer-content">
+                                <p>{data.product_name}</p>
+                                <p>{data.product_description}</p>
+                                <div className="avatar">
+                                    <img src={data.owner.account.avatar.url} alt="" />
+                                    <span>{data.owner.account.username}</span>
+                                </div>
                             </div>
+
+                            <button>Acheter</button>
                         </div>
                     </div>
-
-
                 )}
             </main>
         </>

@@ -1,4 +1,3 @@
-import logo from '../assets/logoVinted.png';
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
@@ -11,23 +10,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     return <>
-        <header>
-            <div className="header">
-                <div className="header-logo">
-                    <Link to={"/"}>
-                        <img src={logo} alt="Logo Vinted" />
-                    </Link>
-                </div>
-                <div className="shearch">
-                    <input type="text" placeholder="Rechercher des articles" />
-                </div>
-                <div className="login">
-                    <button>S'inscrire</button>
-                    <button>Se connecter</button>
-                </div>
-                <button>Vends tes articles</button>
-            </div>
-        </header>
+
         <main>
             <div className="signup-container">
                 <h2>Se connecter</h2>
