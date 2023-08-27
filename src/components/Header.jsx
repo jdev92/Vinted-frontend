@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import logo from "../assets/logoVinted.png"
+import { Link } from "react-router-dom";
+import logo from "../assets/logoVinted.png";
 
 const Header = ({ handleToken, userToken }) => {
   return (
@@ -12,7 +12,7 @@ const Header = ({ handleToken, userToken }) => {
                 <img src={logo} alt="Logo Vinted" />
               </Link>
             </div>
-            <div className="shearch">
+            <div className="search">
               <input type="text" placeholder="Rechercher des articles" />
             </div>
             <div className="login">
@@ -30,7 +30,7 @@ const Header = ({ handleToken, userToken }) => {
                 <button
                   className="logout"
                   onClick={() => {
-                    handleToken()
+                    handleToken();
                   }}
                 >
                   Déconnexion
@@ -42,7 +42,7 @@ const Header = ({ handleToken, userToken }) => {
         </header>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
