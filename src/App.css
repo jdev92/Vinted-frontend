@@ -3,6 +3,12 @@
   margin: auto;
 }
 
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -31,6 +37,7 @@ button {
   height: 30px;
   outline: none;
   width: 115px;
+  cursor: pointer;
 }
 
 .button-sold {
@@ -183,6 +190,7 @@ button {
   height: 35px;
   margin-bottom: 20px;
   width: 275px;
+  outline: none;
 }
 
 .checkbox-form {
@@ -221,6 +229,25 @@ p {
 }
 
 .checkbox-form-link {
+  color: #2cb1ba;
+  font-size: 12px;
+}
+
+/* ------FORM LOGIN------ */
+.button-login {
+  color: #fff;
+  background-color: rgb(75, 178, 187);
+  border-radius: 5px;
+  font-size: 16px;
+  height: 36px;
+  outline: none;
+  width: 230px;
+  height: 35px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.login-link {
   color: #2cb1ba;
   font-size: 12px;
 }
