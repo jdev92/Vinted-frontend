@@ -1,14 +1,14 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
-import axios from "axios"
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const Login = ({ handleToken }) => {
   // Gérer les données du formulaire
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async event => {
-    event.preventDefault()
+    event.preventDefault();
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
@@ -16,23 +16,23 @@ const Login = ({ handleToken }) => {
           email,
           password,
         }
-      )
-      handleToken(response.data.token)
+      );
+      handleToken(response.data.token);
       // Navigation vers la page d'accueil après la connexion réussie
-      navigate("/")
+      navigate("/");
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
   // Utilisation du hook useNavigate pour la navigation
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
       <main>
         <div className="signup-container">
-          <h2>Se connecter</h2>
           <form className="signup-form" onSubmit={handleSubmit}>
+            <h2>Se connecter</h2>
             <input
               type="email"
               value={email}
@@ -46,15 +46,15 @@ const Login = ({ handleToken }) => {
               onChange={e => setPassword(e.target.value)}
             />
 
-            <button>Se connecter</button>
-            <Link to="/signup">
-              <p>Pas encore de compte ? Inscris-toi !</p>
+            <button className="button-login">Se connecter</button>
+            <Link className="login-link" to="/signup">
+              Pas encore de compte ? Inscris-toi !
             </Link>
           </form>
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
