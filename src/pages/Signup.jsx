@@ -1,20 +1,20 @@
-import { useState } from "react"
-import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = ({ handleToken }) => {
   // Gérer les données du formulaire
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [newsletter, setNewsletter] = useState(false)
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [newsletter, setNewsletter] = useState(false);
 
   // Utilisation du hook useNavigate pour la navigation
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Fonction de soumission du formulaire
   const handleSubmit = async event => {
-    event.preventDefault()
+    event.preventDefault();
     try {
       // Appel à l'API pour l'inscription
       const response = await axios.post(
@@ -25,22 +25,22 @@ const Signup = ({ handleToken }) => {
           password,
           newsletter,
         }
-      )
+      );
       // Appel de la fonction de gestion du token avec le token reçu
-      handleToken(response.data.token)
+      handleToken(response.data.token);
       // Navigation vers la page d'accueil après l'inscription réussie
-      navigate("/")
+      navigate("/");
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
 
   return (
     <>
       <main>
         <div className="signup-container">
-          <h2>S'inscrire</h2>
           <form className="signup-form" onSubmit={handleSubmit}>
+            <h2>S'inscrire</h2>
             <input
               type="text"
               value={username}
@@ -59,21 +59,32 @@ const Signup = ({ handleToken }) => {
               placeholder="Mot de passe"
               onChange={e => setPassword(e.target.value)}
             />
-            <input
-              type="checkbox"
-              checked={newsletter}
-              onChange={() => setNewsletter(!newsletter)}
-            />
-            <span>S'abonner à la newsletter</span>
-            <button type="submit">S'inscrire</button>
+            <div className="checkbox-form">
+              <div>
+                <input
+                  type="checkbox"
+                  checked={newsletter}
+                  onChange={() => setNewsletter(!newsletter)}
+                />
+                <span>S'abonner à la newsletter</span>
+                <p>
+                  En m'inscrivant je confirme avoir lu et accepté les Termes &
+                  Conditions et Politique de Confidentialité de Vinted. Je
+                  confirme avoir au moins 18 ans.
+                </p>
+              </div>
+            </div>
+            <button className="button-submit" type="submit">
+              S'inscrire
+            </button>
+            <Link className="checkbox-form-link" to="/login">
+              Déjà un compte? Connectez-vous ici
+            </Link>{" "}
           </form>
-          <p>
-            Déjà un compte? <Link to="/login">Connectez-vous ici</Link>{" "}
-          </p>
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
