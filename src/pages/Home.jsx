@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
 
-const Home = ({ data, setData }) => {
+const Home = ({ data, setData, search }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Home = ({ data, setData }) => {
       try {
         // Requête GET à l'API pour obtenir les offres
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
         );
         // Mise à jour des données et désactivation du chargement
         setData(response.data);
@@ -24,7 +24,7 @@ const Home = ({ data, setData }) => {
     };
 
     fetchData();
-  }, [setData]);
+  }, [setData, search]);
 
   return isLoading ? (
     <div className="spinner">
