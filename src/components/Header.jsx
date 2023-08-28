@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logoVinted.png";
 
-const Header = ({ handleToken, userToken }) => {
+const Header = ({ handleToken, userToken, search, setSearch }) => {
   return (
     <>
       <div className="container">
@@ -13,7 +13,14 @@ const Header = ({ handleToken, userToken }) => {
               </Link>
             </div>
             <div className="search">
-              <input type="text" placeholder="Rechercher des articles" />
+              <input
+                type="text"
+                placeholder="Rechercher des articles"
+                value={search}
+                onChange={event => {
+                  setSearch(event.target.value);
+                }}
+              />
             </div>
             <div className="login">
               {!userToken ? (
