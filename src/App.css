@@ -1,3 +1,4 @@
+/* ------GENERAL------ */
 .container {
   max-width: 1300px;
   margin: auto;
@@ -8,6 +9,27 @@ h2 {
   font-weight: 400;
   margin-bottom: 30px;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+button {
+  background-color: #f5f6f7;
+  color: rgb(75, 178, 187);
+  border: 1px solid rgb(75, 178, 187);
+  border-radius: 5px;
+  font-size: 12px;
+  height: 30px;
+  outline: none;
+  width: 115px;
+  cursor: pointer;
+}
+
+/* ------HEADER------ */
 
 .header {
   display: flex;
@@ -26,18 +48,6 @@ h2 {
   outline: none;
   padding-left: 40px;
   width: 450px;
-}
-
-button {
-  background-color: #f5f6f7;
-  color: rgb(75, 178, 187);
-  border: 1px solid rgb(75, 178, 187);
-  border-radius: 5px;
-  font-size: 12px;
-  height: 30px;
-  outline: none;
-  width: 115px;
-  cursor: pointer;
 }
 
 .button-sold {
