@@ -44,7 +44,9 @@ const Header = ({ handleToken, userToken, search, setSearch }) => {
                 </button>
               )}
             </div>
-            <button className="button-sold">Vends tes articles</button>
+            <Link to="/publish">
+              <button className="button-sold">Vends tes articles</button>
+            </Link>
           </div>
         </header>
       </div>
