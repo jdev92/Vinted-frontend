@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { Navigate } from "react-router-dom";
 
 const Publish = ({ userToken }) => {
   // State pour gérer les données du formulaire
@@ -39,7 +39,7 @@ const Publish = ({ userToken }) => {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${Cookies.get("userToken")}`,
+            Authorization: `Bearer ${userToken}`,
             "Content-Type": "multipart/form-data",
           },
         }
@@ -51,7 +51,7 @@ const Publish = ({ userToken }) => {
     }
   };
   // Rendu du formulaire et de l'image hébergée sur Cloudinary
-  return (
+  return userToken ? (
     <div className="container">
       <h2>Vends ton article</h2>
       <form className="publish-form" onSubmit={handleSubmit}>
@@ -73,8 +73,7 @@ const Publish = ({ userToken }) => {
         </div>
         <div className="publish-description">
           Décris ton article
-          <input
-            type="text"
+          <textarea
             value={description}
             onChange={event => setDescription(event.target.value)}
           />
@@ -134,6 +133,8 @@ const Publish = ({ userToken }) => {
       {/* Affichage de l'image hébergée sur Cloudinary */}
       {cloudinaryPicture && <img src={cloudinaryPicture} alt="" />}
     </div>
+  ) : (
+    <Navigate to="login" />
   );
 };
 
