@@ -5,6 +5,7 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 import Header from "./components/Header";
 import Cookies from "js-cookie";
 import "./App.css";
@@ -56,7 +57,8 @@ function App() {
               <Login data={data} setData={setData} handleToken={handleToken} />
             }
           />
-          <Route path="/publish" element={<Publish />} />
+          <Route path="/publish" element={<Publish userToken={userToken} />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </Router>
     </>
