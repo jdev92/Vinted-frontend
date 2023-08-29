@@ -44,7 +44,7 @@ const Header = ({ handleToken, userToken, search, setSearch }) => {
                 </button>
               )}
             </div>
-            <Link to="/publish">
+            <Link to={userToken ? "/publish" : "/login"}>
               <button className="button-sold">Vends tes articles</button>
             </Link>
           </div>
