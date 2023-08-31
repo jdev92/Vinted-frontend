@@ -72,8 +72,8 @@ const Offer = ({ data, setData, userToken }) => {
               </div>
               {/* Lien vers la page de paiement */}
               <Link
-                to="/payment"
-                state={{ title: data.product_name, price: data.product_price }}
+                to={userToken ? "/payment" : "/login"}
+                state={{ data: data }}
               >
                 <button>Acheter</button>
               </Link>
