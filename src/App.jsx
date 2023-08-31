@@ -43,7 +43,9 @@ function App() {
           />
           <Route
             path="/offers/:id"
-            element={<Offer data={data} setData={setData} />}
+            element={
+              <Offer data={data} setData={setData} userToken={userToken} />
+            }
           />
           <Route
             path="/signup"
