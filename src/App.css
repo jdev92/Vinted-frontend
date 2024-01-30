@@ -263,3 +263,100 @@ p {
 }
 
 /* ------FORM PUBLISH------ */
+.publish-container {
+  margin: 0 auto;
+  width: 1280px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ebedee;
+}
+
+.publish-form {
+  padding-bottom: 40px;
+}
+
+.publish-container h2 {
+  font-size: 32px;
+  padding-top: 40px;
+}
+
+.publish-picture {
+  background-color: #fff;
+  box-shadow: 0 0 2px gray;
+  margin: 20px 0;
+  padding: 24px;
+}
+
+.publish-title {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 0 2px gray;
+  margin: 20px 0;
+  padding: 24px;
+}
+
+.publish-title > span {
+  width: 50%;
+  padding-right: 20px;
+  font-size: 16px;
+  font-family: Maison Neue;
+}
+
+.publish-title input {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: Maison Neue;
+  font-size: 16px;
+}
+
+.publish-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0 0 2px gray;
+  margin: 20px 0;
+  padding: 24px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-group > span {
+  flex-basis: 50%;
+  padding-right: 20px;
+  font-size: 16px;
+  font-family: Maison Neue;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: Maison Neue;
+  font-size: 16px;
+  margin-top: 10px;
+  outline: none;
+  resize: none;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder,
+.input-group select::placeholder {
+  color: #b0b0b0;
+}
+
+.publish-button-submit {
+  background-color: #2cb1ba;
+  color: white;
+}
