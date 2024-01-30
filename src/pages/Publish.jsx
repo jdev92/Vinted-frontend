@@ -17,7 +17,7 @@ const Publish = ({ userToken }) => {
   const [cloudinaryPicture, setCloudinaryPicture] = useState("");
 
   // Fonction appelée lors de la soumission du formulaire
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       // Création d'un objet FormData pour envoyer les données
@@ -52,80 +52,105 @@ const Publish = ({ userToken }) => {
   };
   // Rendu du formulaire et de l'image hébergée sur Cloudinary
   return userToken ? (
-    <div className="container">
+    <div className="publish-container">
       <h2>Vends ton article</h2>
       <form className="publish-form" onSubmit={handleSubmit}>
         <div className="publish-picture">
-          Image
+          <span>Image</span>
           <input
             type="file"
             id="file"
-            onChange={event => setPicture(event.target.files[0])}
+            onChange={(event) => setPicture(event.target.files[0])}
           />
         </div>
-        <div className="publish-title">
-          Titre
-          <input
-            type="text"
-            value={title}
-            onChange={event => setTitle(event.target.value)}
-          />
+
+        <div className="publish-section">
+          <div className="input-group">
+            <span>Titre</span>
+            <input
+              type="text"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              placeholder="ex: Chemise Sézane verte"
+            />
+          </div>
+
+          <div className="input-group">
+            <span>Décris ton article</span>
+            <textarea
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+              placeholder="ex: porté quelquefois..."
+            />
+          </div>
         </div>
-        <div className="publish-description">
-          Décris ton article
-          <textarea
-            value={description}
-            onChange={event => setDescription(event.target.value)}
-          />
+
+        <div className="publish-section">
+          <div className="input-group">
+            <span>Marque</span>
+            <input
+              type="text"
+              value={brand}
+              onChange={(event) => setBrand(event.target.value)}
+              placeholder="ex: Zara"
+            />
+          </div>
+
+          <div className="input-group">
+            <span>Taille</span>
+            <input
+              type="text"
+              value={size}
+              onChange={(event) => setSize(event.target.value)}
+              placeholder="ex: L / 40 / 12"
+            />
+          </div>
+
+          <div className="input-group">
+            <span>Couleur</span>
+            <input
+              type="text"
+              value={color}
+              onChange={(event) => setColor(event.target.value)}
+              placeholder="ex: Fushia"
+            />
+          </div>
+
+          <div className="input-group">
+            <span>État</span>
+            <input
+              type="text"
+              value={condition}
+              onChange={(event) => setCondition(event.target.value)}
+              placeholder="ex: Neuf avec étiquette"
+            />
+          </div>
+
+          <div className="input-group">
+            <span>Lieu</span>
+            <input
+              type="text"
+              value={city}
+              onChange={(event) => setCity(event.target.value)}
+              placeholder="ex: Paris"
+            />
+          </div>
+
+          <div className="input-group">
+            <span>Prix</span>
+            <input
+              type="text"
+              value={price}
+              onChange={(event) => setPrice(event.target.value)}
+              placeholder="0,00 €"
+            />
+            <div className="checkbox-input">
+              <input type="checkbox" value={false} />
+              <span>Je suis intéressé(e) par les échanges</span>
+            </div>
+          </div>
         </div>
-        <div className="publish-brand">
-          Marque
-          <input
-            type="text"
-            value={brand}
-            onChange={event => setBrand(event.target.value)}
-          />
-        </div>
-        <div className="publish-size">
-          Taille
-          <input
-            type="text"
-            value={size}
-            onChange={event => setSize(event.target.value)}
-          />
-        </div>
-        <div className="publish-color">
-          Couleur
-          <input
-            type="text"
-            value={color}
-            onChange={event => setColor(event.target.value)}
-          />
-        </div>
-        <div className="publish-condition">
-          État
-          <input
-            type="text"
-            value={condition}
-            onChange={event => setCondition(event.target.value)}
-          />
-        </div>
-        <div className="publish-city">
-          Lieu
-          <input
-            type="text"
-            value={city}
-            onChange={event => setCity(event.target.value)}
-          />
-        </div>
-        <div className="publish-price">
-          Prix
-          <input
-            type="number"
-            value={price}
-            onChange={event => setPrice(event.target.value)}
-          />
-        </div>
+
         <button className="publish-button-submit" type="submit">
           Ajouter
         </button>
