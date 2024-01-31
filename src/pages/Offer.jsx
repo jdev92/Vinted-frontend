@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
 
-const Offer = ({ data, setData, userToken }) => {
+const Offer = ({ data, setData }) => {
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const price = data.product_price;
+  const protectionFees = (price / 10).toFixed(2);
+  const shippingFees = (protectionFees * 2).toFixed(2);
+  const total = Number(price) + Number(protectionFees) + Number(shippingFees);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Récupérer les détails de l'offre
@@ -30,7 +36,16 @@ const Offer = ({ data, setData, userToken }) => {
     <>
       <main>
         {isLoading ? (
-          <span>Loading...</span>
+          <div className="spinner">
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="120"
+              visible={true}
+            />
+            /
+          </div>
         ) : (
           <div className="offer">
             {/* Affichage de l'image de l'offre */}
@@ -71,12 +86,21 @@ const Offer = ({ data, setData, userToken }) => {
                 </div>
               </div>
               {/* Lien vers la page de paiement */}
-              <Link
-                to={userToken ? "/payment" : "/login"}
-                state={{ data: data }}
+              <button
+                onClick={() => {
+                  navigate("/payment", {
+                    state: {
+                      productName: data.product_name,
+                      totalPrice: total,
+                      protectionFees: protectionFees,
+                      shippingFees: shippingFees,
+                      price: data.product_price,
+                    },
+                  });
+                }}
               >
-                <button>Acheter</button>
-              </Link>
+                Acheter
+              </button>
             </div>
           </div>
         )}
