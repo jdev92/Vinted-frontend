@@ -44,7 +44,7 @@ const Home = ({ data, setData, search }) => {
       </div>
       <main>
         <div className="home-card">
-          {data.offers.map(offer => (
+          {data.offers.map((offer) => (
             <Link to={`/offers/${offer._id}`} key={offer._id} className="card">
               <div className="avatar">
                 {offer.owner.account.avatar && (
