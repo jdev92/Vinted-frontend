@@ -1,23 +1,40 @@
 import { useLocation } from "react-router-dom";
-import CheckoutForm from "../components/CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-const stripePromise = loadStripe(
-  "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
-);
+import ProductSummury from "../components/ProductSummury";
+import CheckoutForm from "../components/CheckoutForm";
+import "../assets/styles/payment.css";
 
 const Payment = () => {
   const location = useLocation();
-  const { title, price, stripeToken } = location.state || {};
-  // const { stripeToken } = location.state;
+  const stripePromise = loadStripe(
+    "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
+  );
+  const { productName, totalPrice, protectionFees, shippingFees, price } =
+    location.state;
 
-  console.log(location);
   return (
-    <div className="container">
-      <h2>Formulaire de paiement</h2>
-      <Elements stripe={stripePromise}>
-        <CheckoutForm stripeToken={stripeToken} title={title} price={price} />
-      </Elements>
+    <div className="payment-wrapper">
+      <div className="payment-container">
+        <ProductSummury
+          price={price}
+          protectionFees={protectionFees}
+          shippingFees={shippingFees}
+          totalPrice={totalPrice}
+        />
+        <div className="payment-card">
+          <div className="content">
+            Il ne vous reste plus qu'un étape pour vous offrir
+            <span className="bold"> {productName}</span>. Vous allez payer{" "}
+            <span className="bold">{totalPrice} €</span> (frais de protection et
+            frais de port inclus).
+            <div className="divider" />
+            <Elements stripe={stripePromise}>
+              <CheckoutForm productName={productName} totalPrice={totalPrice} />
+            </Elements>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
